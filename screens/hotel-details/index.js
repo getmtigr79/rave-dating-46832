@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  FlatList,
-  TextInput,
-  Pressable
-} from "react-native";
+import { Text, View, StyleSheet, Image, FlatList, TextInput, Pressable } from "react-native";
 
 const HotelAmenities = () => {
   const [hotel, setHotel] = useState({});
@@ -18,41 +10,26 @@ const HotelAmenities = () => {
   const [reviewInput, setReviewInput] = useState("");
   useEffect(() => {
     setHotelAmenities(["wifi", "food", "pet", "parking", "pool"]);
-    setHotelServices([
-      "car-rental",
-      "catering",
-      "room-service",
-      "massage",
-      "laundry",
-      "valet-parking"
-    ]);
-    setRatings([
-      {
-        name: "Location",
-        value: 3
-      },
-      {
-        name: "Cleaning",
-        value: 4.8
-      },
-      {
-        name: "Service",
-        value: 4
-      },
-      {
-        name: "Price",
-        value: 3.7
-      }
-    ]);
-    setComments([
-      {
-        username: "Dianne Ameter",
-        comment:
-          "Class aptent taciti sociosqu ad litora torquent per conubia nostra, commo inceptos himenaeos. Phasellus egete elementum mi. Nulla facilisi enam at Phasellus urna sapien, facilisis.",
-        userImage: require("./assets/userImage.png"),
-        rating: 5
-      }
-    ]);
+    setHotelServices(["car-rental", "catering", "room-service", "massage", "laundry", "valet-parking"]);
+    setRatings([{
+      name: "Location",
+      value: 3
+    }, {
+      name: "Cleaning",
+      value: 4.8
+    }, {
+      name: "Service",
+      value: 4
+    }, {
+      name: "Price",
+      value: 3.7
+    }]);
+    setComments([{
+      username: "Dianne Ameter",
+      comment: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, commo inceptos himenaeos. Phasellus egete elementum mi. Nulla facilisi enam at Phasellus urna sapien, facilisis.",
+      userImage: require("./assets/userImage.png"),
+      rating: 5
+    }]);
   }, []);
   useEffect(() => {
     setHotel({
@@ -65,67 +42,50 @@ const HotelAmenities = () => {
       ratings: ratings
     });
   }, [hotelAmenities, hotelServices, ratings]);
-  const icons = [
-    {
-      name: "wifi",
-      image: require("./assets/wifiIcon.png")
-    },
-    {
-      name: "food",
-      image: require("./assets/foodIcon.png")
-    },
-    {
-      name: "pet",
-      image: require("./assets/petIcon.png")
-    },
-    {
-      name: "parking",
-      image: require("./assets/parkingIcon.png")
-    },
-    {
-      name: "pool",
-      image: require("./assets/parkingIcon.png")
-    },
-    {
-      name: "car-rental",
-      image: require("./assets/carRentalIcon.png")
-    },
-    {
-      name: "catering",
-      image: require("./assets/cateringIcon.png")
-    },
-    {
-      name: "room-service",
-      image: require("./assets/roomServiceIcon.png")
-    },
-    {
-      name: "massage",
-      image: require("./assets/massageIcon.png")
-    },
-    {
-      name: "laundary",
-      image: require("./assets/laundaryIcon.png")
-    },
-    {
-      name: "valet-parking",
-      image: require("./assets/valetParkingIcon.png")
-    }
-  ];
+  const icons = [{
+    name: "wifi",
+    image: require("./assets/wifiIcon.png")
+  }, {
+    name: "food",
+    image: require("./assets/foodIcon.png")
+  }, {
+    name: "pet",
+    image: require("./assets/petIcon.png")
+  }, {
+    name: "parking",
+    image: require("./assets/parkingIcon.png")
+  }, {
+    name: "pool",
+    image: require("./assets/parkingIcon.png")
+  }, {
+    name: "car-rental",
+    image: require("./assets/carRentalIcon.png")
+  }, {
+    name: "catering",
+    image: require("./assets/cateringIcon.png")
+  }, {
+    name: "room-service",
+    image: require("./assets/roomServiceIcon.png")
+  }, {
+    name: "massage",
+    image: require("./assets/massageIcon.png")
+  }, {
+    name: "laundary",
+    image: require("./assets/laundaryIcon.png")
+  }, {
+    name: "valet-parking",
+    image: require("./assets/valetParkingIcon.png")
+  }];
 
-  const getIcon = (name) => {
-    const icon = icons.find((item) => item.name === name);
+  const getIcon = name => {
+    const icon = icons.find(item => item.name === name);
     return icon.image;
   };
-  return (
-    <View style={styles.container}>
-      <FlatList
-        ListHeaderComponent={() => (
-          <View>
+
+  return <View style={styles.container}>
+      <FlatList ListHeaderComponent={() => <View>
             <View style={styles.shadowContainer}>
-              <Image
-                style={styles.hotelImage}
-                source={require("./assets/hotelImage.png")}
-              />
+              <Image style={styles.hotelImage} source={require("./assets/hotelImage.png")} />
             </View>
             <View style={styles.hotelInfoContainer}>
               <View style={styles.hotelInfo}>
@@ -137,21 +97,12 @@ const HotelAmenities = () => {
               </View>
             </View>
             <View style={styles.amenitiesContainer}>
-              {hotelAmenities.map((amenity, index) => (
-                <View key={index}>
-                  {index < 4
-                    ? (
-                    <View style={styles.serviceContainer}>
-                      <Image
-                        style={styles.serviceIcon}
-                        source={getIcon(amenity)}
-                      />
+              {hotelAmenities.map((amenity, index) => <View key={index}>
+                  {index < 4 ? <View style={styles.serviceContainer}>
+                      <Image style={styles.serviceIcon} source={getIcon(amenity)} />
                       <Text style={styles.serviceText}>{amenity}</Text>
-                    </View>
-                      )
-                    : null}
-                </View>
-              ))}
+                    </View> : null}
+                </View>)}
               <View style={styles.serviceContainer}>
                 <Text style={styles.moreText}>
                   +{hotelAmenities.length - 4}
@@ -160,41 +111,23 @@ const HotelAmenities = () => {
             </View>
             <Text style={styles.heading}>Location</Text>
             <View style={styles.shadowContainer}>
-              <Image
-                source={require("./assets/mapImage.png")}
-                style={styles.mapImage}
-              />
+              <Image source={require("./assets/mapImage.png")} style={styles.mapImage} />
             </View>
             <View style={styles.locationDetails}>
-              <Image
-                source={require("./assets/locationIcon.png")}
-                style={styles.locationIcon}
-              />
+              <Image source={require("./assets/locationIcon.png")} style={styles.locationIcon} />
               <Text>{hotel.address}</Text>
             </View>
             <View style={styles.locationDetails}>
-              <Image
-                source={require("./assets/starIcon.png")}
-                style={styles.locationIcon}
-              />
+              <Image source={require("./assets/starIcon.png")} style={styles.locationIcon} />
               <Text>9,6 - Perfect Location</Text>
             </View>
             <Text style={styles.heading}>Services</Text>
-          </View>
-        )}
-        data={hotelServices}
-        renderItem={({ item }) => (
-          <View style={styles.serviceContainer}>
+          </View>} data={hotelServices} renderItem={({
+      item
+    }) => <View style={styles.serviceContainer}>
             <Image style={styles.serviceIcon} source={getIcon(item)} />
             <Text style={styles.serviceText}>{item.replace("-", " ")}</Text>
-          </View>
-        )}
-        numColumns={3}
-        keyExtractor={(item, index) => index.toString()}
-        columnWrapperStyle={styles.columnWrapperStyle}
-        showsVerticalScrollIndicator={false}
-        ListFooterComponent={() => (
-          <View>
+          </View>} numColumns={3} keyExtractor={(item, index) => index.toString()} columnWrapperStyle={styles.columnWrapperStyle} showsVerticalScrollIndicator={false} ListFooterComponent={() => <View>
             <View style={styles.ratingsHeader}>
               <Text style={styles.heading}>Ratings</Text>
               <View style={styles.ratingPill}>
@@ -202,49 +135,32 @@ const HotelAmenities = () => {
               </View>
             </View>
             <View style={styles.reviewsContainer}>
-              {ratings.map((rating, index) => (
-                <View style={styles.ratingContainer} key={index}>
+              {ratings.map((rating, index) => <View style={styles.ratingContainer} key={index}>
                   <Text style={styles.ratingTypeText}>{rating.name}</Text>
                   <Rating rating={rating.value} total={5} />
                   <Text style={styles.grey}>{rating.value}</Text>
-                </View>
-              ))}
+                </View>)}
             </View>
             <View>
               <Text style={styles.heading}>Comments</Text>
-              {comments.map((comment, index) => (
-                <Comment comment={comment} key={index} />
-              ))}
+              {comments.map((comment, index) => <Comment comment={comment} key={index} />)}
             </View>
             <View>
               <Text style={styles.heading}>Review</Text>
-              {ratings.map((rating, index) => (
-                <View style={styles.reviewContainer} key={index}>
+              {ratings.map((rating, index) => <View style={styles.reviewContainer} key={index}>
                   <Text style={styles.ratingTypeText}>{rating.name}</Text>
-                  <Image
-                    source={require("./assets/ratingIcon.png")}
-                    style={styles.ratingImage}
-                  />
-                </View>
-              ))}
+                  <Image source={require("./assets/ratingIcon.png")} style={styles.ratingImage} />
+                </View>)}
             </View>
             <View style={styles.separator}>
               <View style={styles.bar} />
               <Text style={styles.separatorText}>Or</Text>
               <View style={styles.bar} />
             </View>
-            <Input
-              text="Text review"
-              onChange={setReviewInput}
-              value={reviewInput}
-              textArea={true}
-            />
+            <Input text="Text review" onChange={setReviewInput} value={reviewInput} textArea={true} />
             <Button buttonText="Submit" />
-          </View>
-        )}
-      />
-    </View>
-  );
+          </View>} />
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -255,7 +171,10 @@ const styles = StyleSheet.create({
   },
   shadowContainer: {
     shadowColor: "rgba(0, 0, 0, 0.5)",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 5,
@@ -417,10 +336,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 20
   }
 });
-
 export default HotelAmenities;
 
-const Rating = ({ total, rating }) => {
+const Rating = ({
+  total,
+  rating
+}) => {
   const calculatedRating = rating / total;
   const fill = Math.round(calculatedRating * 100);
   const ratingFill = {
@@ -430,23 +351,21 @@ const Rating = ({ total, rating }) => {
     height: 10,
     borderRadius: 10
   };
-  return (
-    <View style={styles.ratingBar}>
+  return <View style={styles.ratingBar}>
       <View style={ratingFill} />
-    </View>
-  );
+    </View>;
 };
 
-const Comment = ({ comment }) => {
-  return (
-    <View style={commentStyles.container}>
+const Comment = ({
+  comment
+}) => {
+  return <View style={commentStyles.container}>
       <Image source={comment.userImage} style={commentStyles.userImage} />
       <View style={commentStyles.commentContainer}>
         <Text style={commentStyles.username}>{comment.username}</Text>
         <Text style={commentStyles.comment}>{comment.comment}</Text>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const commentStyles = StyleSheet.create({
@@ -488,57 +407,22 @@ const commentStyles = StyleSheet.create({
   }
 });
 
-const Input = (props) => {
-  return (
-    <View style={[inputStyles.inputContainer, props.containerStyle]}>
-      {props.text
-        ? (
-        <Text style={inputStyles.inputText}>{props.text}</Text>
-          )
-        : null}
+const Input = props => {
+  return <View style={[inputStyles.inputContainer, props.containerStyle]}>
+      {props.text ? <Text style={inputStyles.inputText}>{props.text}</Text> : null}
 
-      <TextInput
-        style={[
-          inputStyles.input,
-          props.style,
-          props.textArea ? inputStyles.textArea : null
-        ]}
-        placeholder={props.placeholder ? props.placeholder : "Enter"}
-        value={props.value}
-        onChangeText={(text) => props.onChange(text)}
-        placeholderTextColor={
-          props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
-        }
-        editable={props.editable !== false}
-        autoCapitalize="none"
-        autoCorrect={false}
-        multiline={!!props.textArea}
-      />
-      {props.errorText
-        ? (
-        <Text style={inputStyles.error}>{props.errorText}</Text>
-          )
-        : null}
-      {props.icon
-        ? (
-        <Image
-          source={props.icon}
-          style={
-            props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText
-          }
-        />
-          )
-        : null}
+      <TextInput style={[inputStyles.input, props.style, props.textArea ? inputStyles.textArea : null]} placeholder={props.placeholder ? props.placeholder : "Enter"} value={props.value} onChangeText={text => props.onChange(text)} placeholderTextColor={props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"} editable={props.editable !== false} autoCapitalize="none" autoCorrect={false} multiline={!!props.textArea} />
+      {props.errorText ? <Text style={inputStyles.error}>{props.errorText}</Text> : null}
+      {props.icon ? <Image source={props.icon} style={props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText} /> : null}
       <View style={styles.children}>{props.children}</View>
-    </View>
-  );
+    </View>;
 };
 
 const inputStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
-    justifyContent: "center"
-    // flex: 1
+    justifyContent: "center" // flex: 1
+
   },
   inputText: {
     fontSize: 14,
@@ -576,7 +460,8 @@ const inputStyles = StyleSheet.create({
   },
   children: {}
 });
-const Button = (params) => {
+
+const Button = params => {
   const backgroundColor = params.color ? params.color : "#000";
   const textColor = params.textColor ? params.textColor : "#fff";
   const btnStyle = {
@@ -587,21 +472,16 @@ const Button = (params) => {
   const btnText = {
     color: params.outline ? "#000" : textColor
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
-        <Pressable
-          style={[buttonStyles.btn, btnStyle, params.style]}
-          onPress={params.onPress}
-        >
+        <Pressable style={[buttonStyles.btn, btnStyle, params.style]} onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
           </Text>
           <View style={styles.childrenContainer}>{params.children}</View>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
@@ -624,7 +504,6 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-
     flexDirection: "row"
   },
   btnText: {
