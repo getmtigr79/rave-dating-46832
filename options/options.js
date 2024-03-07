@@ -5,7 +5,7 @@ export const globalOptions = {
   "screenOptions": {
     "headerShown": false
   },
-  "initialRoute": "signup-2"
+  "initialRoute": "login-2"
 };
 export const modulesOptions = {
   "@modules/app-menu": {
