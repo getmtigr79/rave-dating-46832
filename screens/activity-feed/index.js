@@ -1,4 +1,4 @@
-import * as React from "react";
+import "react";
 import { Text, View, Image, ScrollView, StyleSheet, TouchableHighlight } from "react-native";
 
 const pressed = () => {
@@ -16,11 +16,11 @@ const ActivityFeedScreen = () => {
         <View style={styles.followingSection}>
           <View style={styles.textarea}>
             <Image style={styles.postIcon} source={require("./assets/posts.png")} />
-            <Text>My post</Text>
+            <Text>{"Messages"}</Text>
           </View>
           <View style={styles.textarea}>
             <Image style={styles.followingIcon} source={require("./assets/following.png")} />
-            <Text style={styles.followingText}>Following</Text>
+            <Text style={styles.followingText}>{"Matches"}</Text>
           </View>
         </View>
 
