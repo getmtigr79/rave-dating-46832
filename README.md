@@ -61,7 +61,6 @@ This section will show any installed modules you add from the Storyboard Modules
 - [react-native-typeform-webhook](modules/typeform-webhook)
 - [react-native-camera](modules/camera)
 - [react-native-maps](modules/maps)
-- [react-native-login](modules/login)
 
 # Getting started: Frontend
 

@@ -15,7 +15,6 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/polyfill": "^7.12.1",
     "@modules/camera": "file:./modules/camera/",
-    "@modules/login": "file:./modules/login/",
     "@modules/maps": "file:./modules/maps/",
     "@modules/typeform-webhook": "file:./modules/typeform-webhook/",
     "@react-native-async-storage/async-storage": "1.17.9",
